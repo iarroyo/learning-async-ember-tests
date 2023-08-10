@@ -1,0 +1,23 @@
+{{page-title "Stage1"}}
+{{log "Stage1"}}
+<List
+  @id="list-1"
+  data-test-list-stage1
+  @url="https://5f7dc195834b5c0016b06816.mockapi.io/api/v1/dogs"
+  @attrs={{array "name" "createdAt"}}
+/>
+{{#if this.showStage1SubList}}
+  {{log "showing sublist..."}}
+  <div data-test-stage1>Sub List</div>
+  <List
+    data-test-list-stage1-sublist
+    @id="list-2"
+    @url="https://5f7dc195834b5c0016b06816.mockapi.io/api/v1/dogs"
+    @attrs={{array "name"}}
+    @timeout={{5000}}
+  >
+    <:end>
+      <div data-sublist-end>Sublist end</div>
+    </:end>
+  </List>
+{{/if}}

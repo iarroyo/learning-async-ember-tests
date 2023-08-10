@@ -11,7 +11,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build --environment=production",
+    "build": "npm run tailwind:build && ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
@@ -21,9 +21,11 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "start": "ember serve",
+    "start": "npm run tailwind:build && ember serve",
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
-    "test:ember": "ember test"
+    "test:ember": "ember test",
+    "tailwind:build": "npx tailwindcss -c ./config/tailwind/tailwind.config.js -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css",
+    "tailwind:watch": "npx tailwindcss -c ./config/tailwind/tailwind.config.js -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css --watch"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
@@ -82,9 +84,10 @@
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^7.0.0",
     "ember-resolver": "^10.1.1",
+    "ember-resources": "^6.3.1",
     "ember-source": "~5.1.1",
+    "ember-template-imports": "^3.4.2",
     "ember-template-lint": "^5.11.0",
-    "ember-welcome-page": "^7.0.2",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-ember": "^11.9.0",
@@ -98,6 +101,7 @@
     "stylelint": "^15.9.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-prettier": "^3.0.0",
+    "tailwindcss": "^3.0.0",
     "tracked-built-ins": "^3.1.1",
     "typescript": "^5.1.6",
     "webpack": "^5.88.1"

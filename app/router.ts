@@ -7,5 +7,9 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  // Add route declarations here
+  this.route('stage', function () {
+    this.route('stage1');
+    this.route('stage2');
+    this.route('stage3');
+  });
 });
