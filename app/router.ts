@@ -12,4 +12,11 @@ Router.map(function () {
     this.route('stage2');
     this.route('stage3');
   });
+
+  this.route('todos', function () {
+    this.route('index');
+    this.route('edit', {
+      path: 'edit/:id',
+    });
+  });
 });

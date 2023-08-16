@@ -1,0 +1,20 @@
+{{page-title "Edit"}}
+
+<form {{on "submit" this.onSubmit}}>
+  <label>
+    Todo´s name:
+    <input
+      class="border px-1"
+      type="text"
+      name="todoName"
+      maxlength="30"
+      value={{this.todo.name}}
+    />
+  </label>
+  <div class="p-2">
+    <button
+      class="block m-auto bg-blue-200 px-3 rounded-sm"
+      type="submit"
+    >Submit</button>
+  </div>
+</form>

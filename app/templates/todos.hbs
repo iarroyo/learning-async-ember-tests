@@ -1,0 +1,25 @@
+{{page-title "Index"}}
+
+<div class="flex">
+  {{! sidebar }}
+  <ul class="p-2 min-w-[50px] border-r-2">
+    {{#each this.todos as |todo|}}
+      {{! template-lint-disable no-invalid-interactive }}
+      <li class="hover:bg-blue-100" {{on "click" this.navigatesToDetails}}>
+        <div>{{todo.name}}</div>
+        <div class="flex">
+          <LinkTo @route="todos.edit" @model={{todo.id}}>Edit</LinkTo>
+          &nbsp;
+          <button
+            type="button"
+            {{on "click" (fn this.onDeleteTodo todo.id)}}
+          >Delete</button>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+  <div class="p-2">
+    {{! content }}
+    {{outlet}}
+  </div>
+</div>
